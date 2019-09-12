@@ -1,25 +1,4 @@
-<?/php>
-database=
-username=
-password=
-host=
-?>
-#ctrl+shift + x
-
-nano.gitignore
-#inside
-confi.php ( or config.ini.whichever you created)
-#commit this file
-nano.gitignore (again)
-conf.php
-commit.gitignore file
-nano conf.php
-<?php
-database=
-username=
-password=
-
-  #this is in the index.php
+ #this is in the index.php
   <?php
   echo "hello world";
 ?>
