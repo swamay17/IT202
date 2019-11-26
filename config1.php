@@ -1,7 +1,15 @@
 <?php
-   define('DB_SERVER', 'sql1.njit.edu');
-   define('DB_USERNAME', 'sm2758');
-   define('DB_PASSWORD', 'SUCJrH91f');
-   define('DB_DATABASE', 'project1');
-   $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-?>
+session_start();
+$host = "sql2.njit.edu";
+$username = "sm2758";
+$password = "SUCJrH91f";
+$dbname = "sm2758";
+
+$con = mysqli_connect($host, $username, $password,$dbname);
+// Check connection
+if (!$con) {
+ die("Connection failed: " . mysqli_connect_error());
+}
+
+
+

@@ -1,20 +1,8 @@
-
  
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{ font: 41px sans-serif; text-align: center; }
-    </style>
-</head>
-<body>
-    <div class="page-header">
-        <h1>Hello User,  <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b> Take the Survey now </h1>
-    </div>
-    
+<!--index.php--!>
+<html>  
+      
+    <body>  
         <div class="container">  
             <br />  
             <br />
@@ -49,7 +37,7 @@
      <br />
      <br />
      <br />
-     <h4>Live Result</h4><br />
+     <h4>Live  Result</h4><br />
      <div id="poll_result"></div>
     </div>
    </div>
@@ -59,31 +47,6 @@
    <br />
    <br />
   </div>
-    </body>     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-</body>
+    </body>  
 </html>
+
