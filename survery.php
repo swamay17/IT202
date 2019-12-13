@@ -1,52 +1,67 @@
- 
-<!--index.php--!>
-<html>  
-      
-    <body>  
-        <div class="container">  
-            <br />  
-            <br />
-   <br />
-  
-   <div class="row">
-    <div class="col-md-6">
-     <form method="post" id="poll_form">
-      <h3>Which programming language  you like the most ?</h3>
-      <br />
-      <div class="radio">
-       <label><h4><input type="radio" name="poll_option" class="poll_option" value="Laravel" /> JAVA</h4></label>
-      </div>
-      <div class="radio">
-       <label><h4><input type="radio" name="poll_option" class="poll_option" value="CodeIgniter" /> PYTHON</h4></label>
-      </div>
-      <div class="radio">
-       <label><h4><input type="radio" name="poll_option" class="poll_option" value="CakePHP" /> PHP</h4></label>
-      </div>
-      <div class="radio">
-       <label><h4><input type="radio" name="poll_option" class="poll_option" value="Symfony" /> C++</h4></label>
-      </div>
-      <div class="radio">
-       <label><h4><input type="radio" name="poll_option" class="poll_option" value="Phalcon" /> C </h4></label>
-      </div>
-      <br />
-      <input type="submit" name="poll_button" id="poll_button" class="btn btn-primary" />
-     </form>
-     <br />
-    </div>
-    <div class="col-md-6">
-     <br />
-     <br />
-     <br />
-     <h4>Live  Result</h4><br />
-     <div id="poll_result"></div>
-    </div>
-   </div>
-   
-   
-   <br />
-   <br />
-   <br />
-  </div>
-    </body>  
+<?PHP
+require 'config1.php';
+$voteMessage = "";
+session_start();
+if ((isset($_SESSION['hasVoted']))) {
+	if ($_SESSION['hasVoted'] = '1') {
+		$voteMessage = "You've already voted";
+	}
+}
+else {
+	if (isset($_GET['Submit1']) && isset($_GET['q'])) {
+
+		$selected_radio = $_GET['q'];
+		$idNumber = $_GET['h1'];
+
+		$dbname = "sm2758";
+
+		$db_found = new mysqli($host,$username, $password, $dbname );
+
+		if ($db_found) {
+
+			if($selected_radio == "A") {
+				$votedSQL = "UPDATE tblsurvey SET VotedA = VotedA + 1 WHERE ID = ?";
+				$voteMessage = insert_vote($db_found, $votedSQL, $idNumber);
+			}
+			else if($selected_radio == "B"){
+				$votedSQL = "UPDATE tblsurvey SET VotedB = VotedB + 1 WHERE ID = ?";
+				$voteMessage = insert_vote($db_found, $votedSQL, $idNumber);
+			}
+			else if($selected_radio == "C"){
+				$votedSQL = "UPDATE tblsurvey SET VotedC = VotedC + 1 WHERE ID = ?";
+				$voteMessage = insert_vote($db_found, $votedSQL, $idNumber);
+			}
+			else {
+				print "Error - could not record vote";
+			}	
+		}
+	}
+	else {
+		print "You didn't select a voting option!";
+	}
+}
+
+function insert_vote($db, $sql, $id) {
+
+	$stmt = $db->prepare($sql);
+	$stmt->bind_param('i', $id);
+	$stmt->execute();
+
+	//$_SESSION['hasVoted'] = '1';
+	return "Thanks for voting!";
+}
+
+?>
+
+<html>
+<head>
+<title>Process Survey</title>
+</head>
+
+
+
+<body>
+<?PHP print $voteMessage . "<BR>"; ?>
+</body>
 </html>
 

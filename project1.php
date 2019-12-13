@@ -17,7 +17,7 @@ if(isset($_POST['but_submit'])){
         if($count > 0){
             $_SESSION['username'] = $username;
             echo "Password matched";
-            header("location: welcome.php");
+            header("location: project2.php");
         }else{
             echo "Invalid username and password";
         }
@@ -44,6 +44,14 @@ if(isset($_POST['but_submit'])){
             <div>
                <input type="submit" value="Submit" name="but_submit" id="but_submit" />
            </div>
+         <div class="input-group">
+  	         
+              
+             <input type="button" onclick="location.href='registration.php';" value="Register" />
+              
+          
+                     
+  	</div>
         </div>
     </form> 
 </fieldset> 
